@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Detail Poison — High-Performance Car Care</title>
+<meta name="description" content="Concentrated car care chemicals for people who correct paint properly — snow foam, ceramic coatings, and everything between wash and shine.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Teko:wght@400;500;600;700&family=Barlow:wght@300;400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --gloss:#0E0F11;
+    --acid:#B4FF39;
+    --chrome:#9AA0A6;
+    --crimson:#C81E3A;
+    --off:#F0F0EC;
+    --paper:#F0F0EC;
+    --ink:#15161A;
+    --ink-60: rgba(21,22,26,0.62);
+    --ink-30: rgba(21,22,26,0.24);
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Barlow', sans-serif;
+    font-weight:300;
+    overflow-x:hidden;
+  }
+  h1,h2,h3,.display{font-family:'Teko', sans-serif; font-weight:600; text-transform:uppercase; letter-spacing:0.01em;}
+  .mono{
+    font-family:'Space Mono', monospace;
+    text-transform:uppercase;
+    letter-spacing:0.15em;
+    font-size:0.7rem;
+  }
+  a{color:inherit; text-decoration:none;}
+  img{max-width:100%; display:block;}
+  .wrap{max-width:1180px; margin:0 auto; padding:0 clamp(20px,5vw,60px);}
+  .reveal{opacity:0; transform:translateY(22px); transition:opacity .7s ease, transform .7s ease;}
+  .reveal.in{opacity:1; transform:translateY(0);}
+
+  /* ---------- signature: drip rule ---------- */
+  .drip-rule{
+    width:100%; height:20px;
+    background-repeat:repeat-x; background-size:40px 20px;
+    background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='40' height='20' viewBox='0 0 40 20'><path d='M0 0 H40 V6 Q34 6 34 12 Q34 18 30 18 Q26 18 26 12 Q26 6 20 6 Q14 6 14 12 Q14 18 10 18 Q6 18 6 12 Q6 6 0 6 Z' fill='%23B4FF39'/></svg>");
+  }
+
+  /* ---------- header ---------- */
+  header{
+    position:fixed; top:0; left:0; right:0; z-index:50;
+    background:rgba(240,240,236,0.94);
+    backdrop-filter:blur(8px);
+    border-bottom:1px solid rgba(21,22,26,0.14);
+  }
+  nav{display:flex; align-items:center; justify-content:space-between; padding:14px clamp(20px,5vw,60px);}
+  .logo{display:flex; align-items:center; gap:10px; font-family:'Teko',sans-serif; font-size:1.5rem; text-transform:uppercase; letter-spacing:0.02em;}
+  .logo-mark{width:30px; height:30px;}
+  .logo em{font-style:normal; color:var(--crimson);}
+  .nav-links{display:flex; gap:26px; align-items:center;}
+  .nav-links a{font-family:'Space Mono', monospace; font-size:0.65rem; text-transform:uppercase; letter-spacing:0.1em; position:relative; padding-bottom:3px;}
+  .nav-links a::after{content:''; position:absolute; left:0; bottom:0; width:0; height:1px; background:var(--crimson); transition:width .3s ease;}
+  .nav-links a:hover::after{width:100%;}
+  .cart-pill{
+    background:var(--gloss); color:var(--acid);
+    padding:9px 18px; font-family:'Space Mono',monospace; font-size:0.64rem;
+    text-transform:uppercase; letter-spacing:0.1em;
+  }
+  .nav-toggle{display:none; flex-direction:column; gap:5px; background:none; border:none; cursor:pointer;}
+  .nav-toggle span{width:22px; height:1.5px; background:var(--ink);}
+
+  /* ---------- hero ---------- */
+  .hero{
+    position:relative; min-height:96vh;
+    display:flex; align-items:center;
+    padding-top:100px;
+    background:var(--gloss); color:var(--off);
+    overflow:hidden;
+  }
+  .hero-sheen{
+    position:absolute; inset:0;
+    background:radial-gradient(ellipse at 78% 10%, rgba(180,255,57,0.14), transparent 55%);
+  }
+  .hero-inner{position:relative; z-index:2;}
+  .badge-tag{
+    display:inline-flex; align-items:center; gap:8px;
+    border:1px solid var(--acid); color:var(--acid);
+    padding:7px 14px; margin-bottom:22px;
+    font-family:'Space Mono',monospace; font-size:0.66rem; letter-spacing:0.12em; text-transform:uppercase;
+  }
+  .hero h1{
+    font-size:clamp(3.4rem,10vw,8rem); line-height:0.88;
+  }
+  .hero h1 span{color:var(--acid);}
+  .hero-sub{margin-top:24px; max-width:480px; font-size:1.06rem; line-height:1.75; color:rgba(240,240,236,0.72); text-transform:none; font-family:'Barlow',sans-serif;}
+  .hero-cta{margin-top:36px; display:flex; gap:16px; flex-wrap:wrap;}
+  .btn{
+    display:inline-block; padding:15px 28px;
+    font-family:'Space Mono',monospace; font-size:0.7rem;
+    text-transform:uppercase; letter-spacing:0.12em;
+    background:var(--acid); color:var(--gloss); border:1px solid var(--acid);
+    transition:background .3s ease, color .3s ease;
+  }
+  .btn:hover{background:transparent; color:var(--acid);}
+  .btn-line{background:transparent; color:var(--off); border:1px solid rgba(240,240,236,0.32);}
+  .btn-line:hover{background:rgba(240,240,236,0.08);}
+
+  .hero-facts{
+    margin-top:64px; padding-top:24px; border-top:1px solid rgba(240,240,236,0.16);
+    display:flex; gap:clamp(28px,6vw,60px); flex-wrap:wrap;
+  }
+  .fact-num{font-family:'Teko',sans-serif; font-size:2rem; color:var(--acid);}
+  .fact-label{margin-top:2px; color:rgba(240,240,236,0.5); font-size:0.66rem; font-family:'Space Mono',monospace; text-transform:uppercase; letter-spacing:0.06em;}
+
+  /* ---------- section shell ---------- */
+  section{padding:100px 0;}
+  .section-head{display:flex; justify-content:space-between; align-items:flex-end; gap:36px; margin-bottom:54px; flex-wrap:wrap;}
+  .section-head .mono{color:var(--crimson); display:block; margin-bottom:10px;}
+  .section-head h2{font-size:clamp(2.2rem,4.6vw,3.4rem); max-width:600px;}
+  .section-head p{max-width:320px; color:var(--ink-60); line-height:1.7; font-size:0.94rem; font-family:'Barlow',sans-serif;}
+
+  /* ---------- shop ---------- */
+  .shop{background:var(--paper);}
+  .p-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:28px;}
+  .p-card{position:relative;}
+  .p-thumb{
+    aspect-ratio:4/5; background:var(--gloss);
+    display:flex; align-items:center; justify-content:center;
+    position:relative; overflow:hidden; margin-bottom:16px;
+  }
+  .p-thumb svg{width:46%; transition:transform .5s ease;}
+  .p-card:hover .p-thumb svg{transform:scale(1.06) rotate(-2deg);}
+  .p-badge{
+    position:absolute; top:12px; left:12px;
+    background:var(--acid); color:var(--gloss);
+    font-family:'Space Mono',monospace; font-size:0.6rem;
+    text-transform:uppercase; letter-spacing:0.1em;
+    padding:5px 10px;
+  }
+  .p-title{font-family:'Teko',sans-serif; font-size:1.5rem; margin-bottom:2px; text-transform:uppercase;}
+  .p-desc{font-size:0.86rem; color:var(--ink-60); line-height:1.6; margin-bottom:8px;}
+  .p-price{font-family:'Space Mono',monospace; font-size:0.85rem; color:var(--crimson);}
+
+  /* ---------- story ---------- */
+  .story{background:var(--ink); color:var(--off);}
+  .story-grid{display:grid; grid-template-columns:0.9fr 1.1fr; gap:70px; align-items:center;}
+  .story .mono{color:var(--acid);}
+  .story h2{font-size:clamp(2.2rem,4.6vw,3.4rem); margin:16px 0 20px;}
+  .story p{color:rgba(240,240,236,0.68); line-height:1.85; font-size:1.02rem; margin-bottom:18px; text-transform:none; font-family:'Barlow',sans-serif;}
+  .story-figure{background:#1D1E23; padding:34px; border:1px solid rgba(240,240,236,0.14);}
+  .story-quote{font-family:'Teko',sans-serif; font-size:1.7rem; line-height:1.2; text-transform:uppercase;}
+  .story-quote span{display:block; margin-top:16px; font-family:'Space Mono',monospace; font-size:0.64rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--acid); font-weight:400;}
+
+  /* ---------- process ---------- */
+  .process{background:var(--paper);}
+  .pr-list{border-top:1px solid rgba(21,22,26,0.16);}
+  .pr-item{
+    display:grid; grid-template-columns:70px 1fr 1fr; gap:30px;
+    padding:28px 0; border-bottom:1px solid rgba(21,22,26,0.16); align-items:start;
+  }
+  .pr-num{font-family:'Teko',sans-serif; font-size:1.6rem; color:var(--crimson);}
+  .pr-item h3{font-size:1.3rem; margin-bottom:4px; text-transform:uppercase;}
+  .pr-item p{color:var(--ink-60); font-size:0.9rem; line-height:1.7; font-family:'Barlow',sans-serif;}
+
+  /* ---------- band ---------- */
+  .band{background:var(--crimson); color:var(--off); padding:86px 0; text-align:center;}
+  .band h2{font-size:clamp(1.9rem,4.6vw,2.8rem); max-width:760px; margin:0 auto 18px; text-transform:none; font-weight:500; font-family:'Barlow',sans-serif;}
+  .band .mono{color:var(--gloss); display:block; margin-top:14px;}
+
+  /* ---------- newsletter ---------- */
+  .signup{background:var(--paper);}
+  .signup-box{
+    background:var(--gloss); color:var(--off);
+    padding:clamp(44px,7vw,80px);
+    display:grid; grid-template-columns:1.2fr 1fr; gap:44px; align-items:center;
+  }
+  .signup-box h2{font-size:clamp(2.1rem,4.6vw,2.8rem); margin-bottom:12px;}
+  .signup-box p{color:rgba(240,240,236,0.65); line-height:1.7; max-width:400px; text-transform:none; font-family:'Barlow',sans-serif;}
+  .signup-form{display:flex; gap:0; border-bottom:1px solid rgba(240,240,236,0.35); padding-bottom:12px;}
+  .signup-form input{
+    flex:1; background:transparent; border:none; outline:none;
+    color:var(--off); font-family:'Barlow',sans-serif; font-size:1rem;
+  }
+  .signup-form input::placeholder{color:rgba(240,240,236,0.42);}
+  .signup-form button{
+    background:none; border:none; color:var(--acid);
+    font-family:'Space Mono',monospace; font-size:0.7rem; text-transform:uppercase; letter-spacing:0.12em;
+    cursor:pointer; padding-left:16px;
+  }
+
+  /* ---------- footer ---------- */
+  footer{background:var(--gloss); color:rgba(240,240,236,0.55); padding:60px 0 26px;}
+  .foot-grid{display:grid; grid-template-columns:1.3fr 1fr 1fr 1fr; gap:36px; padding-bottom:40px;}
+  .foot-brand .logo{color:var(--off); margin-bottom:12px;}
+  .foot-brand p{font-size:0.85rem; line-height:1.7; max-width:270px; font-family:'Barlow',sans-serif;}
+  .foot-col .mono{color:var(--acid); display:block; margin-bottom:16px;}
+  .foot-col a{display:block; font-size:0.85rem; margin-bottom:9px; color:rgba(240,240,236,0.6); font-family:'Barlow',sans-serif;}
+  .foot-col a:hover{color:var(--off);}
+  .foot-bottom{display:flex; justify-content:space-between; flex-wrap:wrap; gap:12px; padding-top:20px; border-top:1px solid rgba(240,240,236,0.12); font-size:0.74rem;}
+
+  @media (max-width:920px){
+    .nav-links{display:none;}
+    .nav-toggle{display:flex;}
+    .p-grid{grid-template-columns:repeat(2,1fr);}
+    .story-grid{grid-template-columns:1fr;}
+    .pr-item{grid-template-columns:50px 1fr;}
+    .pr-item p{grid-column:2/3;}
+    .signup-box{grid-template-columns:1fr;}
+    .foot-grid{grid-template-columns:1fr 1fr;}
+  }
+  @media (max-width:560px){
+    .p-grid{grid-template-columns:1fr;}
+    .foot-grid{grid-template-columns:1fr;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <nav class="wrap">
+    <div class="logo">
+      <svg class="logo-mark" viewBox="0 0 40 40" fill="none">
+        <rect x="4" y="4" width="32" height="32" fill="#0E0F11"/>
+        <path d="M20 10 C14 18 12 24 14 30 Q17 34 20 34 Q23 34 26 30 C28 24 26 18 20 10Z" fill="#B4FF39"/>
+      </svg>
+      detail<em>poison</em>
+    </div>
+    <div class="nav-links">
+      <a href="#shop">Shop</a>
+      <a href="#story">Our Story</a>
+      <a href="#process">The Process</a>
+      <a href="#signup">Join the List</a>
+      <a href="#" class="cart-pill">Cart (0)</a>
+    </div>
+    <button class="nav-toggle" aria-label="menu"><span></span><span></span><span></span></button>
+  </nav>
+</header>
+
+<section class="hero">
+  <div class="hero-sheen"></div>
+  <div class="wrap hero-inner">
+    <div class="badge-tag">Concentrated. Not diluted for margins.</div>
+    <h1>Paint that looks<br>criminally <span>good.</span></h1>
+    <p class="hero-sub">Detailing chemicals mixed at working strength, not watered down to sell more bottles. Snow foam, ceramic coatings, and everything in between wash and final shine.</p>
+    <div class="hero-cta">
+      <a href="#shop" class="btn">Shop the Range</a>
+      <a href="#process" class="btn btn-line">See the Wash Order</a>
+    </div>
+    <div class="hero-facts">
+      <div><div class="fact-num">1:20</div><div class="fact-label">Snow foam dilution ratio</div></div>
+      <div><div class="fact-num">9H</div><div class="fact-label">Ceramic coating hardness</div></div>
+      <div><div class="fact-num">12</div><div class="fact-label">Products in the range</div></div>
+      <div><div class="fact-num">0</div><div class="fact-label">Fillers, ever</div></div>
+    </div>
+  </div>
+</section>
+
+<div class="drip-rule"></div>
+
+<section class="shop" id="shop">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div>
+        <span class="mono">The range</span>
+        <h2>Twelve bottles, wash to shine</h2>
+      </div>
+      <p>Every bottle lists its working dilution on the label — no guessing, no oversaturating.</p>
+    </div>
+    <div class="p-grid reveal">
+      <div class="p-card">
+        <div class="p-thumb">
+          <span class="p-badge">Bestseller</span>
+          <svg viewBox="0 0 60 100" fill="none"><rect x="18" y="12" width="24" height="76" rx="3" fill="#B4FF39"/><rect x="22" y="4" width="16" height="10" rx="2" fill="#0E0F11"/></svg>
+        </div>
+        <div class="p-title">Toxic Foam</div>
+        <div class="p-desc">Thick clinging snow foam pre-wash, safe on ceramic coatings.</div>
+        <div class="p-price">$22.00</div>
+      </div>
+      <div class="p-card">
+        <div class="p-thumb">
+          <svg viewBox="0 0 60 100" fill="none"><rect x="18" y="12" width="24" height="76" rx="3" fill="#C81E3A"/><rect x="22" y="4" width="16" height="10" rx="2" fill="#0E0F11"/></svg>
+        </div>
+        <div class="p-title">Wheel Venom</div>
+        <div class="p-desc">Iron-fallout remover, bleeds purple on contact so you know it's working.</div>
+        <div class="p-price">$19.00</div>
+      </div>
+      <div class="p-card">
+        <div class="p-thumb">
+          <span class="p-badge">New</span>
+          <svg viewBox="0 0 60 100" fill="none"><rect x="18" y="12" width="24" height="76" rx="3" fill="#9AA0A6"/><rect x="22" y="4" width="16" height="10" rx="2" fill="#0E0F11"/></svg>
+        </div>
+        <div class="p-title">9H Ceramic Shield</div>
+        <div class="p-desc">A hard, glossy ceramic coating rated for up to two years of protection.</div>
+        <div class="p-price">$68.00</div>
+      </div>
+      <div class="p-card">
+        <div class="p-thumb">
+          <svg viewBox="0 0 60 100" fill="none"><rect x="18" y="12" width="24" height="76" rx="3" fill="#0E0F11"/><rect x="22" y="4" width="16" height="10" rx="2" fill="#B4FF39"/></svg>
+        </div>
+        <div class="p-title">Interior Antidote</div>
+        <div class="p-desc">Interior cleaner and UV protectant for dash, trim, and door cards.</div>
+        <div class="p-price">$16.00</div>
+      </div>
+      <div class="p-card">
+        <div class="p-thumb">
+          <svg viewBox="0 0 60 100" fill="none"><circle cx="30" cy="50" r="26" fill="#B4FF39" opacity="0.85"/><circle cx="30" cy="50" r="8" fill="#0E0F11"/></svg>
+        </div>
+        <div class="p-title">Microfiber Set</div>
+        <div class="p-desc">Six-towel set, color-coded by use so you never cross-contaminate panels.</div>
+        <div class="p-price">$28.00</div>
+      </div>
+      <div class="p-card">
+        <div class="p-thumb">
+          <span class="p-badge">Limited</span>
+          <svg viewBox="0 0 60 100" fill="none"><rect x="18" y="12" width="24" height="76" rx="3" fill="#C81E3A" opacity="0.8"/><rect x="22" y="4" width="16" height="10" rx="2" fill="#0E0F11"/></svg>
+        </div>
+        <div class="p-title">Tire Venom Gel</div>
+        <div class="p-desc">Satin-finish tire dressing, sling-resistant even on the highway.</div>
+        <div class="p-price">$17.00</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="story" id="story">
+  <div class="wrap story-grid">
+    <div class="reveal">
+      <span class="mono">Since 2016</span>
+      <h2>Started because our own kit was garbage</h2>
+      <p>Detail Poison started in a two-car garage after one too many "premium" snow foams turned out to be mostly water. We started mixing our own concentrates at the strength we actually wanted to use — no dilution games to stretch margins.</p>
+      <p>Every product still gets tested on our own cars before it ships, on real daily-driver paint, not just show cars that never see rain.</p>
+      <a href="#shop" class="btn btn-line" style="color:var(--off); border-color:rgba(240,240,236,0.32);">Shop the Range</a>
+    </div>
+    <div class="story-figure reveal">
+      <div class="story-quote">"If it needs a warning label to work right, we're not scared of the label."<span>— Mixing notes, 2018</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="process" id="process">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div>
+        <span class="mono">Wash order</span>
+        <h2>Four steps, in the right order</h2>
+      </div>
+      <p>Skipping a step is the fastest way to swirl paint you just corrected.</p>
+    </div>
+    <div class="pr-list reveal">
+      <div class="pr-item">
+        <div class="pr-num">01</div>
+        <h3>Pre-wash</h3>
+        <p>Toxic Foam breaks up grime before a towel ever touches the panel, cutting swirl risk dramatically.</p>
+      </div>
+      <div class="pr-item">
+        <div class="pr-num">02</div>
+        <h3>Wheels &amp; contact wash</h3>
+        <p>Wheel Venom first, then a two-bucket contact wash with a dedicated wheel-only mitt.</p>
+      </div>
+      <div class="pr-item">
+        <div class="pr-num">03</div>
+        <h3>Dry &amp; decontaminate</h3>
+        <p>A clean microfiber pass, then a clay bar or iron remover pass if the paint still feels rough.</p>
+      </div>
+      <div class="pr-item">
+        <div class="pr-num">04</div>
+        <h3>Protect</h3>
+        <p>9H Ceramic Shield goes on last, on fully clean and dry paint — never over old wax.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="band">
+  <div class="wrap reveal">
+    <h2>"Wheel Venom pulled iron off my rims that three other brands couldn't touch. One bottle lasted me a full season."</h2>
+    <span class="mono">— M. Delgado, verified buyer</span>
+  </div>
+</section>
+
+<section class="signup" id="signup">
+  <div class="wrap">
+    <div class="signup-box reveal">
+      <div>
+        <h2>Join Poison Control</h2>
+        <p>Restock alerts, new formulas, and the occasional dilution-ratio cheat sheet. Nothing more than once a week.</p>
+      </div>
+      <form class="signup-form" onsubmit="return false;">
+        <input type="email" placeholder="you@example.com" required>
+        <button type="submit">Join →</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <div class="logo">detail<em style="font-style:normal;color:var(--acid);">poison</em></div>
+        <p>Concentrated car care chemicals, mixed at working strength and tested on our own paint.</p>
+      </div>
+      <div class="foot-col">
+        <span class="mono">Shop</span>
+        <a href="#shop">Wash &amp; foam</a>
+        <a href="#shop">Coatings</a>
+        <a href="#shop">Interior</a>
+        <a href="#shop">Towels &amp; tools</a>
+      </div>
+      <div class="foot-col">
+        <span class="mono">About</span>
+        <a href="#story">Our story</a>
+        <a href="#process">Wash order</a>
+        <a href="#signup">Poison Control list</a>
+      </div>
+      <div class="foot-col">
+        <span class="mono">Help</span>
+        <a href="#">Dilution guide</a>
+        <a href="#">Shipping</a>
+        <a href="#">Contact</a>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 Detail Poison. Concentrated car care.</span>
+      <span>detailpoison.store</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const revealEls = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target);} });
+  },{threshold:0.15});
+  revealEls.forEach(el=>io.observe(el));
+
+  const toggle = document.querySelector('.nav-toggle');
+  const links = document.querySelector('.nav-links');
+  toggle?.addEventListener('click', ()=>{
+    const open = links.style.display === 'flex';
+    links.style.display = open ? 'none' : 'flex';
+    links.style.cssText += open ? '' : 'position:fixed;top:60px;left:0;right:0;background:#F0F0EC;flex-direction:column;padding:24px;gap:18px;border-bottom:1px solid rgba(21,22,26,0.12);';
+  });
+</script>
+
+</body>
+</html>
